@@ -14,7 +14,7 @@ public class ProyectoFinalDS3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Haciendo commit y push al repo: max");
+        System.out.println("hello world");
     }
     
 }
