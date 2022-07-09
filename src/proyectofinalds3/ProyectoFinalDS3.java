@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package proyectofinalds3;
 
-/**
- *
- * @author admin
- */
 public class ProyectoFinalDS3 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+<<<<<<< HEAD
         System.out.println("hello world");
     }
     
+=======
+        JFrameInSesion obj = new JFrameInSesion();
+        obj.setVisible(true);
+        
+    }   
+>>>>>>> 0f6be9468e0e2cfe06252fccd359b0051fdbe253
 }
