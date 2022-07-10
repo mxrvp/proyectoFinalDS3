@@ -1,13 +1,56 @@
-
 package proyectofinalds3;
 
 import java.awt.Color;
-
+import javax.swing.JOptionPane;
 
 public class PanelUsuario extends javax.swing.JPanel {
 
+    int InsertaroActualizar = 0;  //UNO para insertar y DOS para actualizar
+
     public PanelUsuario() {
         initComponents();
+    }
+
+    public void LimpiarTextBox() {
+        txtCedula.setText("");
+        txtUsuario.setText("");
+        txtPasword.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+    }
+
+    public void HabilitarCampos() {
+        txtCedula.setEnabled(true);
+        txtUsuario.setEnabled(true);
+        txtPasword.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtDireccion.setEnabled(true);
+    }
+
+    public void ValidarBoton() {
+        if (!txtCedula.getText().equals("") && !txtUsuario.getText().equals("") && !txtPasword.getText().equals("")
+                && !txtNombre.getText().equals("") && !txtApellido.getText().equals("") && !txtDireccion.getText().equals("")) {
+            jLabel10.setEnabled(true);
+        } else {
+            jLabel10.setEnabled(false);
+        }
+    }
+
+    public void InhabilitarBusqueda() {
+        txtBuscarCedula.setEnabled(false);
+        btnFind2.setEnabled(false);
+    }
+
+    public void HabilitarBusqueda() {
+        txtBuscarCedula.setEnabled(true);
+        btnFind2.setEnabled(true);
+    }
+
+    public void InhabilitarEditarGuardar() {
+        jLabel_Editar.setEnabled(false);
+        jLabel10.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,7 +88,7 @@ public class PanelUsuario extends javax.swing.JPanel {
         btnCerrar = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         btnEditar = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel_Editar = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         btnCerrar2 = new javax.swing.JPanel();
@@ -91,6 +134,11 @@ public class PanelUsuario extends javax.swing.JPanel {
                 txtUsuarioMousePressed(evt);
             }
         });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+        });
 
         jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
@@ -109,6 +157,11 @@ public class PanelUsuario extends javax.swing.JPanel {
                 txtPaswordMousePressed(evt);
             }
         });
+        txtPasword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPaswordKeyReleased(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
@@ -122,6 +175,11 @@ public class PanelUsuario extends javax.swing.JPanel {
         txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtNombreMousePressed(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
             }
         });
 
@@ -142,6 +200,11 @@ public class PanelUsuario extends javax.swing.JPanel {
                 txtApellidoMousePressed(evt);
             }
         });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyReleased(evt);
+            }
+        });
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
@@ -155,6 +218,11 @@ public class PanelUsuario extends javax.swing.JPanel {
         txtCedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtCedulaMousePressed(evt);
+            }
+        });
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyReleased(evt);
             }
         });
 
@@ -179,6 +247,11 @@ public class PanelUsuario extends javax.swing.JPanel {
                 txtDireccionMousePressed(evt);
             }
         });
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyReleased(evt);
+            }
+        });
 
         jSeparator10.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
@@ -187,7 +260,6 @@ public class PanelUsuario extends javax.swing.JPanel {
         btnNuevo.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
         jLabel4.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nuevo");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -219,7 +291,7 @@ public class PanelUsuario extends javax.swing.JPanel {
 
         txtBuscarCedula.setBackground(new java.awt.Color(244, 244, 244));
         txtBuscarCedula.setForeground(new java.awt.Color(153, 153, 153));
-        txtBuscarCedula.setText("Ingrese la cedula");
+        txtBuscarCedula.setToolTipText("Ingrese la Cédula");
         txtBuscarCedula.setBorder(null);
         txtBuscarCedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -237,7 +309,6 @@ public class PanelUsuario extends javax.swing.JPanel {
 
         btnBuscar.setBackground(new java.awt.Color(244, 244, 244));
 
-        btnFind2.setForeground(new java.awt.Color(0, 0, 0));
         btnFind2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnFind2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
         btnFind2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -271,7 +342,6 @@ public class PanelUsuario extends javax.swing.JPanel {
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("X");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -301,14 +371,14 @@ public class PanelUsuario extends javax.swing.JPanel {
         btnEditar.setBackground(new java.awt.Color(102, 102, 255));
         btnEditar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Editar");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel_Editar.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
+        jLabel_Editar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Editar.setText("Editar");
+        jLabel_Editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel_Editar.setEnabled(false);
+        jLabel_Editar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
+                jLabel_EditarMousePressed(evt);
             }
         });
 
@@ -316,12 +386,12 @@ public class PanelUsuario extends javax.swing.JPanel {
         btnEditar.setLayout(btnEditarLayout);
         btnEditarLayout.setHorizontalGroup(
             btnEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(jLabel_Editar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
         );
         btnEditarLayout.setVerticalGroup(
             btnEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnEditarLayout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -329,10 +399,10 @@ public class PanelUsuario extends javax.swing.JPanel {
         btnGuardar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
         jLabel10.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Guardar");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.setEnabled(false);
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel10MousePressed(evt);
@@ -356,7 +426,6 @@ public class PanelUsuario extends javax.swing.JPanel {
         btnCerrar2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
         jLabel12.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Cerrar");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -537,15 +606,20 @@ public class PanelUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDireccionMousePressed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-
+        //Este es el boton de Nuevo
+        txtBuscarCedula.setText("");
+        HabilitarCampos();
+        txtCedula.requestFocus();
+        InhabilitarBusqueda();
+        InsertaroActualizar = 1;
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void txtBuscarCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarCedulaMousePressed
 
-        }
+    }
 
-        private void txtSegundoNombreMousePressed(java.awt.event.MouseEvent evt) {
-            // No se usa pero no me deja borrarlo como que se bugueo xd
+    private void txtSegundoNombreMousePressed(java.awt.event.MouseEvent evt) {
+        // No se usa pero no me deja borrarlo como que se bugueo xd
     }//GEN-LAST:event_txtBuscarCedulaMousePressed
 
     private void btnFind2btnFindMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMouseEntered
@@ -553,11 +627,27 @@ public class PanelUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_btnFind2btnFindMouseEntered
 
     private void btnFind2btnFindMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMouseExited
-        btnBuscar.setBackground(new Color(244,244,244));
+        btnBuscar.setBackground(new Color(244, 244, 244));
     }//GEN-LAST:event_btnFind2btnFindMouseExited
 
     private void btnFind2btnFindMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMousePressed
+        CRUD_Usuario obj = new CRUD_Usuario();
+        obj.setCedula(txtBuscarCedula.getText());
+        if (obj.BuscarUsuario()) {
+            txtCedula.setText(obj.getCedula());
+            txtUsuario.setText(obj.getUserId());
+            txtPasword.setText(obj.getContrasena());
+            txtNombre.setText(obj.getNombre());
+            txtApellido.setText(obj.getApellido());
+            txtDireccion.setText(obj.getDireccion());
 
+            jLabel_Editar.setEnabled(true);
+
+        } else {
+            LimpiarTextBox();
+            JOptionPane.showMessageDialog(null, "El usuario buscado no existe", "Resultado", JOptionPane.WARNING_MESSAGE);
+            jLabel_Editar.setEnabled(false);
+        }
     }//GEN-LAST:event_btnFind2btnFindMousePressed
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
@@ -572,12 +662,59 @@ public class PanelUsuario extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_jLabel5MousePressed
 
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+    private void jLabel_EditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_EditarMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MousePressed
+        HabilitarCampos();
+        InsertaroActualizar = 2;
+
+    }//GEN-LAST:event_jLabel_EditarMousePressed
 
     private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
         // TODO add your handling code here:
+        //GUARDAR EL USURIO o ACTUALIZAR
+        switch (InsertaroActualizar) {
+            case 1:
+                CRUD_Usuario obj = new CRUD_Usuario();
+
+                obj.setCedula(txtCedula.getText());
+                obj.setUserId(txtUsuario.getText());
+                obj.setContrasena(txtPasword.getText());
+                obj.setNombre(txtNombre.getText());
+                obj.setApellido(txtApellido.getText());
+                obj.setDireccion(txtDireccion.getText());
+
+                if ( obj.InsertarUsuario() ) {
+                    String nombre = obj.getNombre();
+                    JOptionPane.showMessageDialog(null, "Se creo el usuario: " + nombre);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se creo el usuario \n"
+                            + "es posible que el usuario exista o los datos son incorrectos",
+                            "Usuario no creado", JOptionPane.WARNING_MESSAGE);
+                }
+                LimpiarTextBox();
+                HabilitarBusqueda();
+                InhabilitarEditarGuardar();
+                txtBuscarCedula.requestFocus();
+                InsertaroActualizar = 0;
+                break;
+            case 2:
+                CRUD_Usuario obj1 = new CRUD_Usuario();
+                obj1.setCedula(txtCedula.getText());
+                obj1.setUserId(txtUsuario.getText());
+                obj1.setContrasena(txtPasword.getText());
+                obj1.setNombre(txtNombre.getText());
+                obj1.setApellido(txtApellido.getText());
+                obj1.setDireccion(txtDireccion.getText());
+
+                if ( obj1.ActulizarUsuario() ) {
+                    JOptionPane.showMessageDialog(null, "Usuario editado exitosamente", "Edición", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No es posible actualizar el usuario", "Edición", JOptionPane.WARNING_MESSAGE);
+                }
+                LimpiarTextBox();
+                InsertaroActualizar = 0;
+                break;
+        }
     }//GEN-LAST:event_jLabel10MousePressed
 
     private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
@@ -587,6 +724,36 @@ public class PanelUsuario extends javax.swing.JPanel {
     private void txtBuscarCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarCedulaActionPerformed
+
+    private void txtCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyReleased
+        // TODO add your handling code here:
+        ValidarBoton();
+    }//GEN-LAST:event_txtCedulaKeyReleased
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        // TODO add your handling code here:
+        ValidarBoton();
+    }//GEN-LAST:event_txtUsuarioKeyReleased
+
+    private void txtPaswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaswordKeyReleased
+        // TODO add your handling code here:
+        ValidarBoton();
+    }//GEN-LAST:event_txtPaswordKeyReleased
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        // TODO add your handling code here:
+        ValidarBoton();
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        // TODO add your handling code here:
+        ValidarBoton();
+    }//GEN-LAST:event_txtApellidoKeyReleased
+
+    private void txtDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyReleased
+        // TODO add your handling code here:
+        ValidarBoton();
+    }//GEN-LAST:event_txtDireccionKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -609,7 +776,7 @@ public class PanelUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel_Editar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator10;
