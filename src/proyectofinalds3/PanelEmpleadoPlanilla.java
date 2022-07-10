@@ -1,9 +1,11 @@
 
 package proyectofinalds3;
 
+import empleados.Empleado;
 import java.awt.BorderLayout;
 import java.awt.Color;
-
+import planilla.EmpPlanilla;
+import utilmax.*;
 
 public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
 
@@ -28,10 +30,10 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         txtPrimerApellido = new javax.swing.JTextField();
         jSeparator13 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
+        txtHrsTrabajadas = new javax.swing.JTextField();
         jSeparator15 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
+        txtSegundoApellido = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
         txtSegundoNombre = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -44,10 +46,10 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         jSeparator14 = new javax.swing.JSeparator();
         btnAgregar = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        btnAddEmpleadoToPlanilla = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        txtTelefono1 = new javax.swing.JTextField();
+        btnRegresarDatosPlanilla = new javax.swing.JLabel();
+        txtSalxHora = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(244, 244, 244));
 
@@ -120,11 +122,11 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         jLabel23.setForeground(new java.awt.Color(51, 51, 51));
         jLabel23.setText("Horas Trabajadas");
 
-        txtDireccion.setBackground(new java.awt.Color(244, 244, 244));
-        txtDireccion.setForeground(new java.awt.Color(153, 153, 153));
-        txtDireccion.setToolTipText("Ingrese la direccion");
-        txtDireccion.setBorder(null);
-        txtDireccion.setEnabled(false);
+        txtHrsTrabajadas.setBackground(new java.awt.Color(244, 244, 244));
+        txtHrsTrabajadas.setForeground(new java.awt.Color(153, 153, 153));
+        txtHrsTrabajadas.setToolTipText("Ingrese la direccion");
+        txtHrsTrabajadas.setBorder(null);
+        txtHrsTrabajadas.setEnabled(false);
 
         jSeparator15.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator15.setForeground(new java.awt.Color(0, 0, 0));
@@ -133,11 +135,11 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         jLabel24.setForeground(new java.awt.Color(51, 51, 51));
         jLabel24.setText("Salario por Hora");
 
-        txtTelefono.setBackground(new java.awt.Color(244, 244, 244));
-        txtTelefono.setForeground(new java.awt.Color(153, 153, 153));
-        txtTelefono.setToolTipText("Ingrese el telefono");
-        txtTelefono.setBorder(null);
-        txtTelefono.setEnabled(false);
+        txtSegundoApellido.setBackground(new java.awt.Color(244, 244, 244));
+        txtSegundoApellido.setForeground(new java.awt.Color(153, 153, 153));
+        txtSegundoApellido.setToolTipText("Ingrese el telefono");
+        txtSegundoApellido.setBorder(null);
+        txtSegundoApellido.setEnabled(false);
 
         jSeparator16.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator16.setForeground(new java.awt.Color(0, 0, 0));
@@ -234,14 +236,14 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         btnAgregar.setBackground(new java.awt.Color(153, 255, 153));
         btnAgregar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel10.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Agregar");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddEmpleadoToPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
+        btnAddEmpleadoToPlanilla.setForeground(new java.awt.Color(0, 0, 0));
+        btnAddEmpleadoToPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAddEmpleadoToPlanilla.setText("Agregar");
+        btnAddEmpleadoToPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddEmpleadoToPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel10MousePressed(evt);
+                btnAddEmpleadoToPlanillaMousePressed(evt);
             }
         });
 
@@ -249,26 +251,26 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         btnAgregar.setLayout(btnAgregarLayout);
         btnAgregarLayout.setHorizontalGroup(
             btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(btnAddEmpleadoToPlanilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
         );
         btnAgregarLayout.setVerticalGroup(
             btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnAgregarLayout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddEmpleadoToPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         btnRegresar.setBackground(new java.awt.Color(255, 102, 102));
         btnRegresar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel12.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Regresar");
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegresarDatosPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
+        btnRegresarDatosPlanilla.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarDatosPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRegresarDatosPlanilla.setText("Regresar");
+        btnRegresarDatosPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresarDatosPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel12MousePressed(evt);
+                btnRegresarDatosPlanillaMousePressed(evt);
             }
         });
 
@@ -276,23 +278,23 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         btnRegresar.setLayout(btnRegresarLayout);
         btnRegresarLayout.setHorizontalGroup(
             btnRegresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(btnRegresarDatosPlanilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
         );
         btnRegresarLayout.setVerticalGroup(
             btnRegresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnRegresarLayout.createSequentialGroup()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegresarDatosPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        txtTelefono1.setBackground(new java.awt.Color(244, 244, 244));
-        txtTelefono1.setForeground(new java.awt.Color(153, 153, 153));
-        txtTelefono1.setToolTipText("Ingrese el telefono");
-        txtTelefono1.setBorder(null);
-        txtTelefono1.setEnabled(false);
-        txtTelefono1.addActionListener(new java.awt.event.ActionListener() {
+        txtSalxHora.setBackground(new java.awt.Color(244, 244, 244));
+        txtSalxHora.setForeground(new java.awt.Color(153, 153, 153));
+        txtSalxHora.setToolTipText("Ingrese el telefono");
+        txtSalxHora.setBorder(null);
+        txtSalxHora.setEnabled(false);
+        txtSalxHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefono1ActionPerformed(evt);
+                txtSalxHoraActionPerformed(evt);
             }
         });
 
@@ -334,14 +336,14 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
                         .addComponent(jLabel20))
                     .addComponent(jLabel21)
                     .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSalxHora, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator15)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                        .addComponent(txtHrsTrabajadas, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                         .addComponent(jLabel23))
                     .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(232, 232, 232))
@@ -375,7 +377,7 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHrsTrabajadas, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41)
@@ -389,7 +391,7 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSalxHora, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
@@ -401,7 +403,7 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90)
@@ -423,7 +425,7 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
+    private void btnRegresarDatosPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarDatosPlanillaMousePressed
         
         PanelBtnCrear obj = new PanelBtnCrear();
         obj.setSize(1020, 780);
@@ -433,11 +435,22 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         this.add(obj, BorderLayout.CENTER);
         this.revalidate();
         this.repaint();
-    }//GEN-LAST:event_jLabel12MousePressed
+    }//GEN-LAST:event_btnRegresarDatosPlanillaMousePressed
 
-    private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
+    private void btnAddEmpleadoToPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEmpleadoToPlanillaMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel10MousePressed
+        
+          String errors=verificarTodos();
+          if(errors.length()>0){   
+             String msg="Se han encontrado los siguientes errores:\n";
+             msg+=errors;
+             Utilitario.erro(msg,null);
+         }
+         else{
+         
+                Utilitario.erro("se inserto",null);
+          }
+    }//GEN-LAST:event_btnAddEmpleadoToPlanillaMousePressed
 
     private void btnFind2btnFindMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMousePressed
 
@@ -475,20 +488,176 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
         btnCerrar.setBackground(Color.red);
     }//GEN-LAST:event_jLabel2MouseEntered
 
-    private void txtTelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefono1ActionPerformed
+    private void txtSalxHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalxHoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefono1ActionPerformed
+    }//GEN-LAST:event_txtSalxHoraActionPerformed
 
+    
+    
+    //utilidades
+     public String verificarTodos(){
+         String err="";
+          String pN=txtPrimerNombre.getText();
+          String sN=txtSegundoNombre.getText();
+          String pA=txtPrimerApellido.getText();
+          String sA=txtSegundoApellido.getText();
+          String hT=txtHrsTrabajadas.getText();
+        String sH=txtSalxHora.getText();
+          String ar[]={
+           
+             pN,
+             sN,
+             pA,
+             sA,
+             hT,
+             sH
+            
+          };
+          
+          String def[]={
+              "el campo primer Nombre esta vacio",
+               "el campo segundo Nombre esta vacio",
+                "el campo primer Apellido esta vacio",
+                 "el campo segundo Apellido esta vacio",
+                  "el campo horasTrabajadas esta vacio",
+                   "el campo salario por hora esta vacio"
+                 
+          };
+        
+ 
+        
+           for(int i=0;i<=ar.length-1;i++){
+                   if(Utilitario.estaVacia(ar[i])){
+                       
+                           err+=def[i];
+                           err+="\n";
+                          
+                     }
+                }
+        
+        
+            //campos numerios
+            if(pN.matches(".*[0-9].*")){
+                 err+="el primer Nombre no puede ser numérico";
+                      err+="\n";
+            }
+            
+            if(sN.matches(".*[0-9].*")){
+                 err+="el segundo Nombre no puede ser numérico";
+                      err+="\n";
+            }
+            
+              if(pA.matches(".*[0-9].*")){
+                 err+="el primer Apellido no puede ser numérico";
+                      err+="\n";
+            }
+             if(sA.matches(".*[0-9].*")){
+                 err+="el segundo Apellido no puede ser numérico";
+                      err+="\n";
+            }
+             
+            
+           
+ 
+        
+        
+        
+        return err;
+    
+    }
+    
+    public void cargarForm(String vals[]){
+        
+        
+          txtPrimerNombre.setText(vals[1]);
+          txtSegundoNombre.setText(vals[2]);
+          txtPrimerApellido.setText(vals[3]);
+          txtSegundoApellido.setText(vals[4]);
+          txtHrsTrabajadas.setText(vals[5]);
+           txtSalxHora.setText(vals[6]);
+    }
+    
+    
+    public void limpiarForm(){
+        
+          txtPrimerNombre.setText("");
+          txtSegundoNombre.setText("");
+          txtPrimerApellido.setText("");
+          txtSegundoApellido.setText("");
+          txtHrsTrabajadas.setText("");
+           txtSalxHora.setText("");
+    }
+    
+
+    
+    
+
+      public void onPn(){
+        txtPrimerNombre.setEnabled(true);
+    }
+      
+        public void offPn(){
+        txtPrimerNombre.setEnabled(false);
+    }
+
+        public void onSn(){
+        txtSegundoNombre.setEnabled(true);
+    }
+      
+        public void offSn(){
+        txtSegundoNombre.setEnabled(false);
+    }
+        
+        public void onPa(){
+        txtPrimerApellido.setEnabled(true);
+    }
+      
+        public void offPa(){
+        txtPrimerApellido.setEnabled(false);
+    }
+        
+        public void onSa(){
+        txtSegundoApellido.setEnabled(true);
+    }
+      
+        public void offSa(){
+        txtSegundoApellido.setEnabled(false);
+    }
+        
+        
+      
+      
+        
+        public void enableTxt(){
+           
+              txtPrimerNombre.setEnabled(true);
+                txtSegundoNombre.setEnabled(true);
+                 txtPrimerApellido.setEnabled(true);
+                  txtSegundoApellido.setEnabled(true);
+                  txtHrsTrabajadas.setEnabled(true);
+                   txtSalxHora.setEnabled(true);
+                 
+        }
+        
+          public void disableTxt(){
+           
+              txtPrimerNombre.setEnabled(false);
+                txtSegundoNombre.setEnabled(false);
+                 txtPrimerApellido.setEnabled(false);
+                  txtSegundoApellido.setEnabled(false);
+                      
+        }
+          
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAddEmpleadoToPlanilla;
     private javax.swing.JPanel btnAgregar;
     private javax.swing.JPanel btnBuscar;
     private javax.swing.JPanel btnCerrar;
     private javax.swing.JLabel btnFind2;
     private javax.swing.JPanel btnRegresar;
+    private javax.swing.JLabel btnRegresarDatosPlanilla;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -507,11 +676,11 @@ public class PanelEmpleadoPlanilla extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JTextField txtBuscarCedula;
-    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtHrsTrabajadas;
     private javax.swing.JTextField txtPrimerApellido;
     private javax.swing.JTextField txtPrimerNombre;
+    private javax.swing.JTextField txtSalxHora;
+    private javax.swing.JTextField txtSegundoApellido;
     private javax.swing.JTextField txtSegundoNombre;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtTelefono1;
     // End of variables declaration//GEN-END:variables
 }

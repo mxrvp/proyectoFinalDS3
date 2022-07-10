@@ -75,15 +75,15 @@
                       </Group>
                       <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jSeparator14" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
-                      <Component id="txtTelefono" min="-2" pref="261" max="-2" attributes="0"/>
+                      <Component id="txtSegundoApellido" min="-2" pref="261" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtTelefono1" min="-2" pref="271" max="-2" attributes="0"/>
+                      <Component id="txtSalxHora" min="-2" pref="271" max="-2" attributes="0"/>
                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jSeparator15" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtDireccion" alignment="0" pref="261" max="32767" attributes="0"/>
+                          <Component id="txtHrsTrabajadas" alignment="0" pref="261" max="32767" attributes="0"/>
                           <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jSeparator16" min="-2" pref="261" max="-2" attributes="0"/>
@@ -128,7 +128,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel23" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtDireccion" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="txtHrsTrabajadas" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="jSeparator15" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -145,7 +145,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel24" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtTelefono1" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="txtSalxHora" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="jSeparator16" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -159,7 +159,7 @@
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="txtTelefono" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="txtSegundoApellido" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Component id="jSeparator14" min="-2" pref="11" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
@@ -325,7 +325,7 @@
             <Property name="text" type="java.lang.String" value="Horas Trabajadas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDireccion">
+        <Component class="javax.swing.JTextField" name="txtHrsTrabajadas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f4" green="f4" red="f4" type="rgb"/>
@@ -361,7 +361,7 @@
             <Property name="text" type="java.lang.String" value="Salario por Hora"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTelefono">
+        <Component class="javax.swing.JTextField" name="txtSegundoApellido">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f4" green="f4" red="f4" type="rgb"/>
@@ -565,20 +565,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel10" alignment="1" pref="129" max="32767" attributes="0"/>
+                  <Component id="btnAddEmpleadoToPlanilla" alignment="1" pref="129" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel10" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="btnAddEmpleadoToPlanilla" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel10">
+            <Component class="javax.swing.JLabel" name="btnAddEmpleadoToPlanilla">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Bahnschrift" size="13" style="0"/>
@@ -593,7 +593,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel10MousePressed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddEmpleadoToPlanillaMousePressed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -615,20 +615,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel12" alignment="1" pref="129" max="32767" attributes="0"/>
+                  <Component id="btnRegresarDatosPlanilla" alignment="1" pref="129" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel12" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="btnRegresarDatosPlanilla" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel12">
+            <Component class="javax.swing.JLabel" name="btnRegresarDatosPlanilla">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Bahnschrift" size="13" style="0"/>
@@ -643,12 +643,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel12MousePressed"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRegresarDatosPlanillaMousePressed"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtTelefono1">
+        <Component class="javax.swing.JTextField" name="txtSalxHora">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f4" green="f4" red="f4" type="rgb"/>
@@ -663,7 +663,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefono1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSalxHoraActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

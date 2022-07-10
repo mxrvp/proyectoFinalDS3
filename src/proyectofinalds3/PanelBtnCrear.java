@@ -3,9 +3,16 @@ package proyectofinalds3;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Date;
+import planilla.PlanillaModel;
+import utilmax.*;
 
 
 public class PanelBtnCrear extends javax.swing.JPanel {
+      private int statusBtnAddPlanilla=0;
+    private int statusBtnAddEmp=0;
+    private PlanillaModel pMod=new PlanillaModel();
+  
 
 
     public PanelBtnCrear() {
@@ -24,13 +31,13 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         btnCrearPlanilla = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        btnAddPlanilla = new javax.swing.JLabel();
         btnAdicionarEmpleado = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        btnAddEmp = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        fechaPlanilla = new com.toedter.calendar.JDateChooser();
         btnRegresar = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        btnCerrarDatosPlanilla = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(244, 244, 244));
 
@@ -96,14 +103,19 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         btnCrearPlanilla.setBackground(new java.awt.Color(102, 102, 255));
         btnCrearPlanilla.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("<html><center>Crear Planilla");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        btnAddPlanilla.setForeground(new java.awt.Color(0, 0, 0));
+        btnAddPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAddPlanilla.setText("<html><center>Crear Planilla");
+        btnAddPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddPlanilla.setEnabled(false);
+        btnAddPlanilla.setFocusable(false);
+        btnAddPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddPlanillaMouseEntered(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
+                btnAddPlanillaMousePressed(evt);
             }
         });
 
@@ -111,26 +123,22 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         btnCrearPlanilla.setLayout(btnCrearPlanillaLayout);
         btnCrearPlanillaLayout.setHorizontalGroup(
             btnCrearPlanillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(btnAddPlanilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnCrearPlanillaLayout.setVerticalGroup(
             btnCrearPlanillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnAddPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         btnAdicionarEmpleado.setBackground(new java.awt.Color(153, 255, 153));
         btnAdicionarEmpleado.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel10.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("<html><center>Adicionar Empleado");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel10MousePressed(evt);
-            }
-        });
+        btnAddEmp.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        btnAddEmp.setForeground(new java.awt.Color(0, 0, 0));
+        btnAddEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAddEmp.setText("<html><center>Adicionar Empleado");
+        btnAddEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddEmp.setEnabled(false);
 
         javax.swing.GroupLayout btnAdicionarEmpleadoLayout = new javax.swing.GroupLayout(btnAdicionarEmpleado);
         btnAdicionarEmpleado.setLayout(btnAdicionarEmpleadoLayout);
@@ -138,29 +146,31 @@ public class PanelBtnCrear extends javax.swing.JPanel {
             btnAdicionarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnAdicionarEmpleadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnAdicionarEmpleadoLayout.setVerticalGroup(
             btnAdicionarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addComponent(btnAddEmp, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         jLabel20.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setText("Seleccione la fecha");
 
+        fechaPlanilla.setDateFormatString("yyyy-MM-dd");
+
         btnRegresar.setBackground(new java.awt.Color(255, 102, 102));
         btnRegresar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel11.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("<html><center>Regresar");
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrarDatosPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        btnCerrarDatosPlanilla.setForeground(new java.awt.Color(0, 0, 0));
+        btnCerrarDatosPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCerrarDatosPlanilla.setText("<html><center>Regresar");
+        btnCerrarDatosPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarDatosPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel11MousePressed(evt);
+                btnCerrarDatosPlanillaMousePressed(evt);
             }
         });
 
@@ -170,12 +180,12 @@ public class PanelBtnCrear extends javax.swing.JPanel {
             btnRegresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnRegresarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCerrarDatosPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnRegresarLayout.setVerticalGroup(
             btnRegresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+            .addComponent(btnCerrarDatosPlanilla, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -197,15 +207,15 @@ public class PanelBtnCrear extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(fechaPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel20)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(410, 410, 410)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAdicionarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCrearPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCrearPlanilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +228,7 @@ public class PanelBtnCrear extends javax.swing.JPanel {
                 .addGap(92, 92, 92)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechaPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
                 .addComponent(btnCrearPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
@@ -252,47 +262,62 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MousePressed
 
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+    private void btnAddPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPlanillaMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MousePressed
+         if(statusBtnAddPlanilla==1){
+            Utilitario.exi("agregar planilla presionado",null);
+         }
+      
+    }//GEN-LAST:event_btnAddPlanillaMousePressed
 
-    private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
+    private void btnCerrarDatosPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarDatosPlanillaMousePressed
+       
+    }//GEN-LAST:event_btnCerrarDatosPlanillaMousePressed
+
+    private void btnAddPlanillaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPlanillaMouseEntered
         // TODO add your handling code here:
-        PanelEmpleadoPlanilla obj = new PanelEmpleadoPlanilla();
-        obj.setSize(1020, 780);
-        obj.setLocation(0, 0);
+        if(fechaPlanilla.getDate()!=null){
+        onBtnAddPlanilla();
+        
+        }
+    }//GEN-LAST:event_btnAddPlanillaMouseEntered
 
-        this.removeAll();
-        this.add(obj, BorderLayout.CENTER);
-        this.revalidate();
-        this.repaint();
-    }//GEN-LAST:event_jLabel10MousePressed
-
-    private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
-        PanelPlanilla obj = new PanelPlanilla();
-        obj.setSize(1020, 780);
-        obj.setLocation(0, 0);
-
-        this.removeAll();
-        this.add(obj, BorderLayout.CENTER);
-        this.revalidate();
-        this.repaint();
-    }//GEN-LAST:event_jLabel11MousePressed
-
-
+    
+      //behaviour de los botones
+        public void onBtnAddPlanilla(){
+        btnAddPlanilla.setEnabled(true);
+        this.statusBtnAddPlanilla=1;
+    }
+       
+        public void offBtnAddPlanilla(){
+            btnAddPlanilla.setEnabled(false);
+             this.statusBtnAddPlanilla=0;
+    }
+        public void onBtnAddEmp(){
+        btnAddEmp.setEnabled(true);
+         this.statusBtnAddEmp=1;
+    }
+       
+        public void offBtnAddEmp(){
+            btnAddEmp.setEnabled(false);
+               this.statusBtnAddEmp=0;
+    }
+        
+        
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAddEmp;
+    private javax.swing.JLabel btnAddPlanilla;
     private javax.swing.JPanel btnAdicionarEmpleado;
     private javax.swing.JPanel btnCerrar;
+    private javax.swing.JLabel btnCerrarDatosPlanilla;
     private javax.swing.JPanel btnCrearPlanilla;
     private javax.swing.JPanel btnRegresar;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser fechaPlanilla;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
