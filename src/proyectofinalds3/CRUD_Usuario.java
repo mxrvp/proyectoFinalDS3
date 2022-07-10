@@ -115,7 +115,7 @@ public class CRUD_Usuario {
             ps.setString(1, this.cedula);
          
             rs = ps.executeQuery();   
-            if (rs.next()){
+            if ( rs.next() ){
                 this.userId = rs.getString("userid");
                 this.contrasena = rs.getString("contrasenna");
                 this.nombre = rs.getString("nombre");
@@ -143,14 +143,16 @@ public class CRUD_Usuario {
             ps.setString(6, this.direccion);
          
             rs = ps.executeQuery();
+            
             if ( rs.next() ){
+                this.nombre = rs.getString("nombre");
                 con.close();
                 return true;
-            }else{
-                con.close();
-                return false;
             }
-            }catch (SQLException e){
+            con.close();
+            return false;
+            
+        }catch (SQLException e){
                 return false;
             }
         }

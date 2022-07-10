@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class JFrameInSesion extends javax.swing.JFrame {
+
     int Xmouse,Ymouse;
     public JFrameInSesion() {
         initComponents();
@@ -296,13 +297,7 @@ public class JFrameInSesion extends javax.swing.JFrame {
         ValidarLogin obj = new ValidarLogin();
         obj.setUsuario(usuario);
         obj.setContrasena(contrasena);
-        
-        System.out.println("usuario = " + usuario);
-        System.out.println("contrasena = " + contrasena);
-        
-        System.out.println( obj.getUsuario() );
-        System.out.println( obj.getContrasena());
-         
+        obj.setNombreUsuario(usuario);
         if(obj.ValidarLogin() ){
             JFrameMenu fObj = new JFrameMenu();
             fObj.setVisible(true);

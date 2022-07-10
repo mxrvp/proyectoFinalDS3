@@ -10,6 +10,7 @@ package proyectofinalds3;
  */
 import java.sql.*;
 public class ValidarLogin {
+    public static String nombreUsuario;
     private String usuario;
     private String contrasena;
     
@@ -17,11 +18,22 @@ public class ValidarLogin {
     PreparedStatement ps;
     ResultSet rs;
 
-    public ValidarLogin(String usuario, String contrasena) {
+    public ValidarLogin(String usuario, String contrasena, Connection con, PreparedStatement ps, ResultSet rs) {
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.con = con;
+        this.ps = ps;
+        this.rs = rs;
     }
-    
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
     public ValidarLogin(){}
 
     public String getUsuario() {
@@ -52,8 +64,9 @@ public class ValidarLogin {
                         
             if (rs.next()){
                valor = Integer.valueOf(rs.getString("numero"));
+               
                if(valor==1){
-                   validacion = true;
+                   validacion = true;               
                }
                con.close();  
             }
@@ -62,5 +75,30 @@ public class ValidarLogin {
         }catch (SQLException e){
             return validacion;
         }
-    }
+    }// Fin de validar usuario
+    
+    public String NombreUsuario(){
+        
+          String nombreUsuario = "xxx";
+          JFrameInSesion obj = new JFrameInSesion();
+    
+          try{
+            
+            con = Conexion.getConnection();
+            ps = con.prepareCall("CALL sp_select_nombreUsuario(?)");
+            ps.setString(1, this.nombreUsuario);
+            rs = ps.executeQuery();
+                        
+            if (rs.next()){
+               nombreUsuario = (rs.getString("nombre"));
+               con.close();
+            }
+            con.close();
+            return nombreUsuario;
+        }catch (SQLException e){
+            return nombreUsuario;
+        }
+
+    }//NombreUsuario
+
 }

@@ -9,6 +9,9 @@ public class JFrameMenu extends javax.swing.JFrame {
     int xMouse, yMouse;
     public JFrameMenu() {
         initComponents();
+        ValidarLogin obj = new ValidarLogin();
+        obj.NombreUsuario();
+        jLabel_usuarioInicio.setText(obj.NombreUsuario());
     }
 
 
@@ -20,7 +23,7 @@ public class JFrameMenu extends javax.swing.JFrame {
         JpBase2 = new javax.swing.JPanel();
         JpMenu2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jLabel_usuarioInicio = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         btnCrearUsr2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -63,10 +66,10 @@ public class JFrameMenu extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
 
-        jLabel18.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Edwin Gonzalez");
+        jLabel_usuarioInicio.setFont(new java.awt.Font("Bahnschrift", 0, 20)); // NOI18N
+        jLabel_usuarioInicio.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_usuarioInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_usuarioInicio.setText("Edwin Gonzalez");
 
         btnCrearUsr2.setBackground(new java.awt.Color(51, 51, 255));
 
@@ -237,7 +240,7 @@ public class JFrameMenu extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(JpMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(JpMenu2Layout.createSequentialGroup()
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel_usuarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26))
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(JpMenu2Layout.createSequentialGroup()
@@ -262,7 +265,7 @@ public class JFrameMenu extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_usuarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -288,7 +291,6 @@ public class JFrameMenu extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("X");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -440,7 +442,7 @@ public class JFrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel21MouseExited
 
     private void jLabel21MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MousePressed
- 
+        System.exit(0);
     }//GEN-LAST:event_jLabel21MousePressed
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
@@ -542,13 +544,13 @@ public class JFrameMenu extends javax.swing.JFrame {
     private javax.swing.JPanel btnVerEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_usuarioInicio;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator7;
     // End of variables declaration//GEN-END:variables
