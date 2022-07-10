@@ -298,6 +298,10 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddEmpMouseEntered"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddEmpMousePressed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PanelBtnCrear_btnAddEmp"/>
               </AuxValues>
@@ -317,7 +321,7 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="fechaPlanilla">
           <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-d"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="btnRegresar">

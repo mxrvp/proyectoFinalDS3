@@ -3,6 +3,7 @@ package proyectofinalds3;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import planilla.PlanillaModel;
 import utilmax.*;
@@ -17,6 +18,7 @@ public class PanelBtnCrear extends javax.swing.JPanel {
 
     public PanelBtnCrear() {
         initComponents();
+        
     }
 
 
@@ -139,6 +141,14 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         btnAddEmp.setText("<html><center>Adicionar Empleado");
         btnAddEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddEmp.setEnabled(false);
+        btnAddEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAddEmpMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAddEmpMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnAdicionarEmpleadoLayout = new javax.swing.GroupLayout(btnAdicionarEmpleado);
         btnAdicionarEmpleado.setLayout(btnAdicionarEmpleadoLayout);
@@ -158,7 +168,7 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setText("Seleccione la fecha");
 
-        fechaPlanilla.setDateFormatString("yyyy-MM-dd");
+        fechaPlanilla.setDateFormatString("yyyy-MM-d");
 
         btnRegresar.setBackground(new java.awt.Color(255, 102, 102));
         btnRegresar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
@@ -265,13 +275,33 @@ public class PanelBtnCrear extends javax.swing.JPanel {
     private void btnAddPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPlanillaMousePressed
         // TODO add your handling code here:
          if(statusBtnAddPlanilla==1){
-            Utilitario.exi("agregar planilla presionado",null);
+           Date fechaP=fechaPlanilla.getDate(); 
+           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+           String fechaStr= formatter.format(fechaP);  
+        
+               
+            if(pMod.insert(fechaStr)>0){
+                Utilitario.exi("Se ha creado una nueva planilla ",null);
+            }
+            else{
+                 Utilitario.erro("no se han podido guardar los datos", null);
+            }
          }
       
     }//GEN-LAST:event_btnAddPlanillaMousePressed
 
     private void btnCerrarDatosPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarDatosPlanillaMousePressed
-       
+       PanelPlanilla obj = new PanelPlanilla();
+        obj.setSize(1020, 780);
+        obj.setLocation(0, 0);
+
+        this.removeAll();
+        this.add(obj, BorderLayout.CENTER);
+        this.revalidate();
+        this.repaint();
+        
+
+      
     }//GEN-LAST:event_btnCerrarDatosPlanillaMousePressed
 
     private void btnAddPlanillaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPlanillaMouseEntered
@@ -279,8 +309,38 @@ public class PanelBtnCrear extends javax.swing.JPanel {
         if(fechaPlanilla.getDate()!=null){
         onBtnAddPlanilla();
         
+        }else{
+          offBtnAddPlanilla();
         }
     }//GEN-LAST:event_btnAddPlanillaMouseEntered
+
+    private void btnAddEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEmpMouseEntered
+        // TODO add your handling code here:
+        //todo verificar que haya un max id creado osea que este sea mayor a cero para poder insertar empleados a la planilla
+        int lastInsert=pMod.getLastInsert();
+        
+        if(lastInsert>0){
+         onBtnAddEmp();
+         
+        }else{
+         offBtnAddEmp();
+        }
+    }//GEN-LAST:event_btnAddEmpMouseEntered
+
+    private void btnAddEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddEmpMousePressed
+        // TODO add your handling code here:
+        
+        if(statusBtnAddEmp==1){
+          PanelEmpleadoPlanilla obj = new PanelEmpleadoPlanilla();
+        obj.setSize(1020, 780);
+        obj.setLocation(0, 0);
+
+        this.removeAll();
+        this.add(obj, BorderLayout.CENTER);
+        this.revalidate();
+        this.repaint();
+        }
+    }//GEN-LAST:event_btnAddEmpMousePressed
 
     
       //behaviour de los botones
