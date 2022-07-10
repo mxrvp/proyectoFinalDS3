@@ -1,5 +1,6 @@
 package proyectofinalds3;
 
+import usuario.CRUD_Usuario;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -623,11 +624,17 @@ public class PanelUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarCedulaMousePressed
 
     private void btnFind2btnFindMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMouseEntered
-        btnBuscar.setBackground(new Color(52, 152, 219));
+        if(btnFind2.isEnabled())
+        {
+            btnBuscar.setBackground(new Color(52, 152, 219));
+        }
     }//GEN-LAST:event_btnFind2btnFindMouseEntered
 
     private void btnFind2btnFindMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMouseExited
-        btnBuscar.setBackground(new Color(244, 244, 244));
+        if(btnFind2.isEnabled())
+        {
+            btnBuscar.setBackground(new Color(244, 244, 244));
+        }
     }//GEN-LAST:event_btnFind2btnFindMouseExited
 
     private void btnFind2btnFindMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFind2btnFindMousePressed
@@ -644,7 +651,7 @@ public class PanelUsuario extends javax.swing.JPanel {
             jLabel_Editar.setEnabled(true);
 
         } else {
-            LimpiarTextBox();
+            //LimpiarTextBox();
             JOptionPane.showMessageDialog(null, "El usuario buscado no existe", "Resultado", JOptionPane.WARNING_MESSAGE);
             jLabel_Editar.setEnabled(false);
         }
@@ -672,6 +679,7 @@ public class PanelUsuario extends javax.swing.JPanel {
     private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
         // TODO add your handling code here:
         //GUARDAR EL USURIO o ACTUALIZAR
+
         switch (InsertaroActualizar) {
             case 1:
                 CRUD_Usuario obj = new CRUD_Usuario();
@@ -683,7 +691,7 @@ public class PanelUsuario extends javax.swing.JPanel {
                 obj.setApellido(txtApellido.getText());
                 obj.setDireccion(txtDireccion.getText());
 
-                if ( obj.InsertarUsuario() ) {
+                if (obj.InsertarUsuario()) {
                     String nombre = obj.getNombre();
                     JOptionPane.showMessageDialog(null, "Se creo el usuario: " + nombre);
                 } else {
@@ -706,7 +714,7 @@ public class PanelUsuario extends javax.swing.JPanel {
                 obj1.setApellido(txtApellido.getText());
                 obj1.setDireccion(txtDireccion.getText());
 
-                if ( obj1.ActulizarUsuario() ) {
+                if (obj1.ActulizarUsuario()) {
                     JOptionPane.showMessageDialog(null, "Usuario editado exitosamente", "Edición", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, "No es posible actualizar el usuario", "Edición", JOptionPane.WARNING_MESSAGE);
