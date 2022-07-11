@@ -4,11 +4,28 @@ package proyectofinalds3;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-public class PanelPlanilla extends javax.swing.JPanel {
+import javax.swing.table.DefaultTableModel;
+import planilla.*;
+import com.mysql.jdbc.ResultSet;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
+import java.util.*;
+import utilmax.Utilitario;
+
+
+
+public class PanelPlanilla extends javax.swing.JPanel {
+ public DefaultTableModel tableModel;
+    PlanillaModel pMod = new PlanillaModel();
 
     public PanelPlanilla() {
         initComponents();
+           genTablePlanilla();
     }
 
  
@@ -23,13 +40,13 @@ public class PanelPlanilla extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         btnVer = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        btnVerDetalle = new javax.swing.JLabel();
         btnCrear = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        btnAddPlanilla = new javax.swing.JLabel();
         btnCerrar2 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        btnCerrarPlanilla = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablePlanilla = new javax.swing.JTable();
 
         jPanel1.setBackground(new java.awt.Color(244, 244, 244));
 
@@ -95,14 +112,14 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnVer.setBackground(new java.awt.Color(102, 102, 255));
         btnVer.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Ver");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVerDetalle.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
+        btnVerDetalle.setForeground(new java.awt.Color(0, 0, 0));
+        btnVerDetalle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnVerDetalle.setText("Ver");
+        btnVerDetalle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
+                btnVerDetalleMousePressed(evt);
             }
         });
 
@@ -110,26 +127,26 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnVer.setLayout(btnVerLayout);
         btnVerLayout.setHorizontalGroup(
             btnVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(btnVerDetalle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
         );
         btnVerLayout.setVerticalGroup(
             btnVerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnVerLayout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         btnCrear.setBackground(new java.awt.Color(153, 255, 153));
         btnCrear.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel10.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Crear");
-        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAddPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
+        btnAddPlanilla.setForeground(new java.awt.Color(0, 0, 0));
+        btnAddPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAddPlanilla.setText("Crear");
+        btnAddPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel10MousePressed(evt);
+                btnAddPlanillaMousePressed(evt);
             }
         });
 
@@ -137,26 +154,26 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnCrear.setLayout(btnCrearLayout);
         btnCrearLayout.setHorizontalGroup(
             btnCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(btnAddPlanilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
         );
         btnCrearLayout.setVerticalGroup(
             btnCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCrearLayout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         btnCerrar2.setBackground(new java.awt.Color(255, 102, 102));
         btnCerrar2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
-        jLabel12.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Cerrar");
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrarPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
+        btnCerrarPlanilla.setForeground(new java.awt.Color(0, 0, 0));
+        btnCerrarPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCerrarPlanilla.setText("Cerrar");
+        btnCerrarPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel12MousePressed(evt);
+                btnCerrarPlanillaMousePressed(evt);
             }
         });
 
@@ -164,16 +181,16 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnCerrar2.setLayout(btnCerrar2Layout);
         btnCerrar2Layout.setHorizontalGroup(
             btnCerrar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(btnCerrarPlanilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
         );
         btnCerrar2Layout.setVerticalGroup(
             btnCerrar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCerrar2Layout.createSequentialGroup()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCerrarPlanilla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablePlanilla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -181,7 +198,7 @@ public class PanelPlanilla extends javax.swing.JPanel {
                 "ID Planilla", "Fecha", "T.S.Bruto", "T.S.S", "T.E.E", "T.S.Neto"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablePlanilla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -250,8 +267,16 @@ public class PanelPlanilla extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MousePressed
 
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
-        PanelCalculoPLanilla obj = new PanelCalculoPLanilla();
+    private void btnVerDetalleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerDetalleMousePressed
+     
+        int row=tablePlanilla.getSelectedRow();
+        
+        if(row>=0){
+            String val=tableModel.getValueAt(row, 0).toString();
+            int id_planilla=Integer.parseInt(val);
+           
+        
+        PanelCalculoPLanilla obj = new PanelCalculoPLanilla(id_planilla);
         obj.setSize(1020, 780);
         obj.setLocation(0, 0);
 
@@ -259,9 +284,14 @@ public class PanelPlanilla extends javax.swing.JPanel {
         this.add(obj, BorderLayout.CENTER);
         this.revalidate();
         this.repaint();
-    }//GEN-LAST:event_jLabel7MousePressed
+         }
+        else {
+          Utilitario.info("Por favor seleccione una planilla", null);
+        }
+     
+    }//GEN-LAST:event_btnVerDetalleMousePressed
 
-    private void jLabel10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MousePressed
+    private void btnAddPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPlanillaMousePressed
         // TODO add your handling code here:
         
         PanelBtnCrear obj = new PanelBtnCrear();
@@ -272,27 +302,65 @@ public class PanelPlanilla extends javax.swing.JPanel {
         this.add(obj, BorderLayout.CENTER);
         this.revalidate();
         this.repaint();
-    }//GEN-LAST:event_jLabel10MousePressed
+    }//GEN-LAST:event_btnAddPlanillaMousePressed
 
-    private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
+    private void btnCerrarPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarPlanillaMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel12MousePressed
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarPlanillaMousePressed
 
+    
+    //manejo de la tabla
+    public void genTablePlanilla() {
+        destroyPlanilla();
+        int totales=0;
+        tableModel = (DefaultTableModel) tablePlanilla.getModel();
+
+        try {
+           
+            
+            java.sql.ResultSet  result=pMod.selectAll();
+            
+     
+                 while(result.next()){
+                     
+                   
+                  
+                 String cols[] = {result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getString(6)};
+            tableModel.addRow(cols);
+            totales++;
+                 }
+            
+        } catch (SQLException e) {
+         System.out.println(e.getMessage());
+        }
+
+     System.out.println(totales);
+
+    }
+
+    public void destroyPlanilla() {
+        tableModel = (DefaultTableModel) tablePlanilla.getModel();
+        int c = tableModel.getRowCount();
+        for (int i = 0; i <= c - 1; i++) {
+            tableModel.removeRow(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAddPlanilla;
     private javax.swing.JPanel btnCerrar;
     private javax.swing.JPanel btnCerrar2;
+    private javax.swing.JLabel btnCerrarPlanilla;
     private javax.swing.JPanel btnCrear;
     private javax.swing.JPanel btnVer;
+    private javax.swing.JLabel btnVerDetalle;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablePlanilla;
     // End of variables declaration//GEN-END:variables
 }
