@@ -85,6 +85,7 @@ public class CRUD_Usuario {
     }
     
      public boolean InsertarUsuario(){
+        contrasena = Encrypt_Base64.cifrar(this.contrasena);
         try{
             con = Conexion.getConnection();
             ps = con.prepareCall("call sp_insert_usuarios(?,?,?,?,?,?)" );

@@ -55,6 +55,7 @@ public class ValidarLogin {
     public boolean ValidarLogin(){
         boolean validacion = false;
         int valor = 0;
+        this.contrasena = Encrypt_Base64.cifrar(this.contrasena);
         try{
             con = Conexion.getConnection();
             ps = con.prepareCall("CALL sp_select_validar_usuario(?,?)");
