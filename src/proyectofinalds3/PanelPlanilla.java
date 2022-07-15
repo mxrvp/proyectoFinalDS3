@@ -1,4 +1,3 @@
-
 package proyectofinalds3;
 
 import java.awt.BorderLayout;
@@ -17,18 +16,16 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import utilmax.Utilitario;
 
-
-
 public class PanelPlanilla extends javax.swing.JPanel {
- public DefaultTableModel tableModel;
+
+    public DefaultTableModel tableModel;
     PlanillaModel pMod = new PlanillaModel();
 
     public PanelPlanilla() {
         initComponents();
-           genTablePlanilla();
+        genTablePlanilla();
     }
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,7 +52,6 @@ public class PanelPlanilla extends javax.swing.JPanel {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("X");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -113,7 +109,6 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnVer.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
         btnVerDetalle.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        btnVerDetalle.setForeground(new java.awt.Color(0, 0, 0));
         btnVerDetalle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVerDetalle.setText("Ver");
         btnVerDetalle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -140,7 +135,6 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnCrear.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
         btnAddPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        btnAddPlanilla.setForeground(new java.awt.Color(0, 0, 0));
         btnAddPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAddPlanilla.setText("Crear");
         btnAddPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -167,7 +161,6 @@ public class PanelPlanilla extends javax.swing.JPanel {
         btnCerrar2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 81, 152)));
 
         btnCerrarPlanilla.setFont(new java.awt.Font("Bahnschrift", 0, 13)); // NOI18N
-        btnCerrarPlanilla.setForeground(new java.awt.Color(0, 0, 0));
         btnCerrarPlanilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnCerrarPlanilla.setText("Cerrar");
         btnCerrarPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -198,6 +191,11 @@ public class PanelPlanilla extends javax.swing.JPanel {
                 "ID Planilla", "Fecha", "T.S.Bruto", "T.S.S", "T.E.E", "T.S.Neto"
             }
         ));
+        tablePlanilla.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tablePlanillaFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablePlanilla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -260,7 +258,7 @@ public class PanelPlanilla extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        btnCerrar.setBackground(new Color(221,221,221));
+        btnCerrar.setBackground(new Color(221, 221, 221));
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
@@ -268,32 +266,30 @@ public class PanelPlanilla extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MousePressed
 
     private void btnVerDetalleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerDetalleMousePressed
-     
-        int row=tablePlanilla.getSelectedRow();
-        
-        if(row>=0){
-            String val=tableModel.getValueAt(row, 0).toString();
-            int id_planilla=Integer.parseInt(val);
-           
-        
-        PanelCalculoPLanilla obj = new PanelCalculoPLanilla(id_planilla);
-        obj.setSize(1020, 780);
-        obj.setLocation(0, 0);
 
-        this.removeAll();
-        this.add(obj, BorderLayout.CENTER);
-        this.revalidate();
-        this.repaint();
-         }
-        else {
-          Utilitario.info("Por favor seleccione una planilla", null);
+        int row = tablePlanilla.getSelectedRow();
+
+        if (row >= 0) {
+            String val = tableModel.getValueAt(row, 0).toString();
+            int id_planilla = Integer.parseInt(val);
+
+            PanelCalculoPLanilla obj = new PanelCalculoPLanilla(id_planilla);
+            obj.setSize(1020, 780);
+            obj.setLocation(0, 0);
+
+            this.removeAll();
+            this.add(obj, BorderLayout.CENTER);
+            this.revalidate();
+            this.repaint();
+        } else {
+            Utilitario.info("Por favor seleccione una planilla", null);
         }
-     
+
     }//GEN-LAST:event_btnVerDetalleMousePressed
 
     private void btnAddPlanillaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddPlanillaMousePressed
         // TODO add your handling code here:
-        
+
         PanelBtnCrear obj = new PanelBtnCrear();
         obj.setSize(1020, 780);
         obj.setLocation(0, 0);
@@ -309,34 +305,33 @@ public class PanelPlanilla extends javax.swing.JPanel {
         System.exit(0);
     }//GEN-LAST:event_btnCerrarPlanillaMousePressed
 
-    
+    private void tablePlanillaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tablePlanillaFocusGained
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tablePlanillaFocusGained
+
     //manejo de la tabla
     public void genTablePlanilla() {
         destroyPlanilla();
-        int totales=0;
+        int totales = 0;
         tableModel = (DefaultTableModel) tablePlanilla.getModel();
 
         try {
-           
-            
-            java.sql.ResultSet  result=pMod.selectAll();
-            
-     
-                 while(result.next()){
-                     
-                   
-                  
-                 String cols[] = {result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getString(6)};
-            tableModel.addRow(cols);
-            totales++;
-                 }
-            
+
+            java.sql.ResultSet result = pMod.selectAll();
+
+            while (result.next()) {
+                //System.out.println("result = " + result());
+                String cols[] = {result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6)};
+                tableModel.addRow(cols);
+                totales++;
+            }
+
         } catch (SQLException e) {
-         System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
 
-     System.out.println(totales);
-
+        //System.out.println(totales);
     }
 
     public void destroyPlanilla() {
