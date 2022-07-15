@@ -23,7 +23,7 @@ public int getLastInsert(){
         this.ps=this.conn.prepareStatement("CALL sp_select_last()");
         this.rs=this.ps.executeQuery();
         if(rs.next()){
-             this.lastInsert=Integer.parseInt(this.rs.getString(1));
+             this.lastInsert=Integer.parseInt( this.rs.getString("id_planilla") );
         }
        
     } catch (SQLException e) {
@@ -167,7 +167,7 @@ public void connect(){
                  System.out.println(e.getMessage());
              }
             
-              this.conn=DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");
+              this.conn=DriverManager.getConnection("jdbc:mysql://localhost/planilla?useUnicode=true&characterEncoding=utf-8", "root", "");
         }
         catch (SQLException e) {
        System.out.println(e.getMessage());
